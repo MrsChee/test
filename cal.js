@@ -25,7 +25,6 @@ var next=cal.querySelector('.next');
  );
 
  next.addEventListener('click',function(){
-
   ShowedYear=getNextYear(ShowedYear,ShowedMonth);
   ShowedMonth=getNextMonth(ShowedMonth);
   DrawCal(ShowedYear,ShowedMonth,currentMoment,cal);  
@@ -56,43 +55,38 @@ function getPrewMonth(month)//предыдущий месяц
   }
   else{return month-1;}
 }
-function getNextYear(year,month){
-  {
-    if(month==11){
-      return year+1;
-    }
+function getNextYear(year,month)
+{
+  {if(month==11){
+   return year+1;}
     else{return year;}
-    } 
+   } 
 }
-function getNextMonth(month){
-  if(month==11){
-    return 0;
-  }
+function getNextMonth(month)
+{
+  if(month==11)
+  { return 0;}
   else{return month+1;}
 
 }
 
-
-
 function showCurrentDate(ShowedYear, ShowedMonth, currentMoment,dates)//определение текущего дня
 {
-
-
   if(ShowedYear==currentMoment['year']&ShowedMonth==currentMoment['month'])
-{
+  {
   var cells= dates.querySelectorAll('td');
   console.log(cells);
   for(var i=0;i<=cells.length;i++)
-  {
-    if(cells[i].innerHTML==currentMoment['date'])
     {
+    if(cells[i].innerHTML==currentMoment['date'])
+      {
       cells[i].classList.add('active');
       break;
-    }
-  }
+      }
+       }
   currentMoment['date']
-}
-}
+     }
+  }
 function showInfo(year,month,elem)//инфа о месяце и годе сверху
 { elem.innerHTML=getMonthName(month)+' '+year;
 
@@ -105,33 +99,25 @@ return months[num];
 
 }
 
-
 function draw(year,month,dates) //функция отрисовки дат
-{
-  
+{ 
   var arr=[];
   var FirstDateOfMonth=1;
   var LastDateOfMonth=getLastDay(year,month);
   //console.log(LastDateOfMonth);
-
   var doElemsNum = getdoElems(year,month);
-  
   var posleElemsNum= getposleElems(year,month);
   //console.log(posleElems);
-
-
-  
   arr=createArr(FirstDateOfMonth,LastDateOfMonth); 
   //console.log(arr);
 arr=doElems(doElemsNum,'*', arr);
 //console.log(arr);
 arr=posleElems(posleElemsNum,'*', arr);
 arr= nedelyaArr(7,arr);
-console.log(arr);
+//console.log(arr);
 createtable(arr,dates);
-  
-
 }
+
 function createtable(arr,parent)//создает двумерный массив цифр в календаре
 {
   parent.innerHTML=''; 
@@ -141,14 +127,11 @@ function createtable(arr,parent)//создает двумерный массив
   var td = document.createElement('td');
   td.innerHTML=arr[i][j];
   tr.appendChild(td);
-  
-
 }
 parent.appendChild(tr);
 }
-
 }
-function createArr(from,to)//создает двумерный массив в пределе заданых чисел
+function createArr(from,to)//создает массив в пределе заданых чисел
 { var arr=[];
   for(var i=from; i<=to; i++){
     arr.push(i);
@@ -164,11 +147,12 @@ a.push(elem);
 var arr2=[].concat(a,arr);
 return arr2;
 }
-function posleElems(num,elem, arr)//пробелы после{
-{ var a=[];
+function posleElems(num,elem, arr)//пробелы после
+{
+  { var a=[];
   for (var i=0;i<num;i++){
 a.push(elem);
-  }
+   }
 var arr2=[].concat(arr,a);
 return arr2;
 }
@@ -200,13 +184,13 @@ function getLastDayNum(year,month)//номер последнего дня ме�
   return date.getDay();
 
 }
-function getdoElems(year,month)// количество пробелов до
+function getdoElems(year,month)// количество символов до
 {
   var jsFirstDay= getFirstDayNum(year,month);
   var FirstDay= NumDayWeek(jsFirstDay);
   return FirstDay-1;
 }
-function getposleElems(year,month)// количество пробелов после
+function getposleElems(year,month)// количество символов после
 {var jsLastDay= getLastDayNum(year,month);
   var LastDay= NumDayWeek(jsLastDay);
   return 7- LastDay;
@@ -222,5 +206,4 @@ for(var i=0;i<it; i++){
   a.push(ch);
 }
   return a;
-
 }
