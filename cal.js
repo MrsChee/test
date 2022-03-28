@@ -113,14 +113,14 @@ function draw(year, month, dates) {
   var FirstDateOfMonth = 1
   var LastDateOfMonth = getLastDay(year, month)
   //console.log(LastDateOfMonth);
-  var doElemsNum = getdoElems(year, month)
-  var posleElemsNum = getposleElems(year, month)
-  //console.log(posleElems);
+  var beforeElemsNum = getbeforeElems(year, month)
+  var afterElemsNum = getafterElems(year, month)
+  //console.log(afterElems);
   arr = createArr(FirstDateOfMonth, LastDateOfMonth)
   //console.log(arr);
-  arr = doElems(doElemsNum, "*", arr)
+  arr = beforeElems(beforeElemsNum, "*", arr)
   //console.log(arr);
-  arr = posleElems(posleElemsNum, "*", arr)
+  arr = afterElems(afterElemsNum, "*", arr)
   arr = nedelyaArr(7, arr)
   //console.log(arr);
   createtable(arr, dates)
@@ -147,7 +147,7 @@ function createArr(from, to) {
   }
   return arr
 }
-function doElems(num, elem, arr) {
+function beforeElems(num, elem, arr) {
   //пробелы до {
   var a = []
   for (var i = 0; i < num; i++) {
@@ -156,7 +156,7 @@ function doElems(num, elem, arr) {
   var arr2 = [].concat(a, arr)
   return arr2
 }
-function posleElems(num, elem, arr) {
+function afterElems(num, elem, arr) {
   //пробелы после{
   var a = []
   for (var i = 0; i < num; i++) {
@@ -204,13 +204,13 @@ function getLastDayNum(year, month) {
   var date = new Date(year, month + 1, 0)
   return date.getDay()
 }
-function getdoElems(year, month) {
+function getbeforeElems(year, month) {
   // количество пробелов до
   var jsFirstDay = getFirstDayNum(year, month)
   var FirstDay = NumDayWeek(jsFirstDay)
   return FirstDay - 1
 }
-function getposleElems(year, month) {
+function getafterElems(year, month) {
   // количество пробелов после
   var jsLastDay = getLastDayNum(year, month)
   var LastDay = NumDayWeek(jsLastDay)
