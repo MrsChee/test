@@ -1,0 +1,73 @@
+
+<html>
+
+<body>
+  <style type="text/css">
+    TABLE {
+     width: 770px; /* Ширина таблицы */
+     height: 500px;
+     border-collapse: collapse; /* Убираем двойные линии между ячейками */
+     margin: auto; /* Выравниваем таблицу по центру окна */
+    }
+    TD, TH {
+     padding: 5px; /* Поля вокруг содержимого таблицы */
+     border: 1px solid black; /* Параметры рамки */
+     text-align: right;
+     position: top;
+    }
+    TH {
+     background: #38cee2; /* Цвет фона */
+    }
+    .strelka 
+    {
+    cursor: pointer;
+    height: 120px;
+    width: 80px;
+    position: relative;
+    margin: 20px;
+    }
+    .strelka .prev
+    { position: relative;
+    top: -1px;
+    transition: transform 0.3s ease;
+    vertical-align: middle;
+    }
+    #cal .active{
+      background: #38cee2;
+      color: rgb(255, 0, 106);
+    }
+    
+   </style>
+   <div id="cal">
+     <div class='info'></div>
+  
+<table>
+ <thead >
+   <tr>
+     <td>ПН</td>
+     <td>ВТ</td>
+     <td>СР</td>
+     <td>ЧТ</td>
+     <td>ПТ</td>
+     <td>СБ</td>
+     <td>ВС</td>
+   </tr>
+ </thead>
+ <tbody class="dates" >
+   
+ </tbody>
+</table>
+<div class="strelka">
+  <a href="#" class="prev">&larr;</a>
+  <a href="#" class="next">&rarr;</a>   
+</div>
+</div>
+
+
+  <script src="cal.js">
+  </script>
+
+
+</body>
+
+</html>
